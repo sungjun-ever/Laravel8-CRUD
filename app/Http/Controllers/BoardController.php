@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BoardController extends Controller
 {
     public function index(){
-        return view('boards.index');
+        return view('boards.index', ['boards' => Board::all() -> sortDesc()]);
     }
 
     public function create(){
@@ -27,5 +27,29 @@ class BoardController extends Controller
         $board -> save();
 
         return redirect() -> route('boards.index');
+    }
+
+    public function show($id){
+        $board = Board::where('id', $id) -> first();
+        return view('boards.show', compact('board'));
+    }
+
+    public function edit($id){
+        $board = Board::where('id', $id) -> first();
+        return view('boards.edit', compact('board'));
+    }
+
+    public function update(Request $request, $id){
+        $validation = $request -> validate([
+            'title' => 'required',
+            'story' => 'required'
+        ]);
+
+        $board = Board::where('id', $id) -> first();
+        $board -> title = $validation['title'];
+        $board -> story = $validation['story'];
+        $board -> save();
+
+        return redirect() -> route('boards.show', $id);
     }
 }

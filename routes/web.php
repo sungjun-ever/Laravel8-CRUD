@@ -18,7 +18,9 @@ Route::get('/', function () {
     return view('home');
 }) -> name('home');
 
-
 Route::get('boards', [BoardController::class, 'index']) -> name('boards.index');
 Route::get('boards/create', [BoardController::class, 'create']) -> name('boards.create');
 Route::post('boards', [BoardController::class, 'store']) -> name('boards.store');
+Route::get('boards/{board}', [BoardController::class, 'show']) -> name('boards.show');
+Route::get('boards/{board}/edit', [BoardController::class, 'edit']) -> name('boards.edit');
+Route::put('boards/{board}', [BoardController::class, 'update']) -> name('boards.update');
