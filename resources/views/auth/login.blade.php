@@ -17,8 +17,8 @@
             <p class="mt-8">
                 <input type="submit" value="로그인"
                        class="bg-blue-500 hover:bg-blue-700 px-4 py-1 text-lg text-white rounded-lg outline-none">
-                <button class="bg-red-500 hover:bg-red-700 px-4 py-1 ml-4 text-lg text-white rounded-lg outline-none"
-                        onclick="history.back()">취소</button>
+                <input type="button" class="bg-red-500 hover:bg-red-700 px-4 py-1 ml-4 text-lg text-white rounded-lg outline-none"
+                       value="취소" onclick="window.location.href ='{{route('home')}}'">
             </p>
         </form>
     </div>
