@@ -12,6 +12,8 @@
 @section('header')
     <header class="w-2/3 mx-auto mt-16 text-right">
         <a href="{{route('boards.index')}}" class="text-xl">게시판</a>
+        <a href="{{route('auth.register.index')}}" class="text-xl">회원가입</a>
+        <a href="{{route('auth.login.index')}}" class="text-xl">로그인</a>
     </header>
 @show
 
