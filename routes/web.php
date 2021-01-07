@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,9 @@ Route::get('/', function () {
 Route::get('auth/register', [RegisterController::class, 'index']) -> name('auth.register.index');
 Route::post('auth/register', [RegisterController::class, 'store']) -> name('auth.register.store');
 
-Route::get('auth/login', function (){
-    return view('auth.login');
-}) -> name('auth.login.index');
+Route::get('auth/login', [LoginController::class, 'index']) -> name('auth.login.index');
+Route::post('auth/login', [LoginController::class, 'login']) -> name('auth.login.attempt');
+Route::post('auth/logout', [LoginController::class, 'logout']) -> name('auth.logout');
 
 Route::get('boards', [BoardController::class, 'index']) -> name('boards.index');
 Route::get('boards/create', [BoardController::class, 'create']) -> name('boards.create');

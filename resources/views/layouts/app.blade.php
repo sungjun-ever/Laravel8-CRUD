@@ -12,8 +12,18 @@
 @section('header')
     <header class="w-2/3 mx-auto mt-16 text-right">
         <a href="{{route('boards.index')}}" class="text-xl">게시판</a>
-        <a href="{{route('auth.register.index')}}" class="text-xl">회원가입</a>
-        <a href="{{route('auth.login.index')}}" class="text-xl">로그인</a>
+        @guest()
+            <a href="{{route('auth.register.index')}}" class="text-xl">회원가입</a>
+            <a href="{{route('auth.login.index')}}" class="text-xl">로그인</a>
+        @endguest
+
+        @auth()
+            <span class="text-xl text-blue-500">{{auth() -> user() -> name}}</span>
+            <form action="/auth/logout" method="post" class="inline-block">
+                @csrf
+                <a href="{{route('auth.logout')}}"><button class="text-xl">로그아웃</button></a>
+            </form>
+        @endauth
     </header>
 @show
 
