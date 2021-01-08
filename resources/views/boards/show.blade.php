@@ -7,6 +7,7 @@
         </div>
         <div class="text-lg">
             {{$board -> story}}
+            <img src="{{asset('images/'.$board->image_name)}}" alt="1" style="width: 100%; height: 100%">
         </div>
         <div class="mt-8">
             <a href="{{route('boards.edit', $board -> id)}}">

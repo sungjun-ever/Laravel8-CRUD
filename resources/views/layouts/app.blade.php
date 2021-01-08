@@ -11,6 +11,7 @@
 <body>
 @section('header')
     <header class="w-2/3 mx-auto mt-16 text-right">
+        <a href="{{route('home')}}" class="text-xl">홈으로</a>
         <a href="{{route('boards.index')}}" class="text-xl">게시판</a>
         @guest()
             <a href="{{route('auth.register.index')}}" class="text-xl">회원가입</a>
@@ -26,7 +27,6 @@
         @endauth
     </header>
 @show
-
 @section('section')
 @show
 </body>

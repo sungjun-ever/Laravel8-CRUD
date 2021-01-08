@@ -19,6 +19,8 @@ class CreateBoardsTable extends Migration
             $table->string('user_name');
             $table->string('title');
             $table->longText('story');
+            $table->string('image_name') -> nullable();
+            $table->string('image_path') -> nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

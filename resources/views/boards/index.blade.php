@@ -11,8 +11,8 @@
             </div>
         </div>
         <div class="w-full mt-8">
+            <table class="w-3/4 mx-auto text-lg">
             @foreach($boards as $board)
-                <table class="w-3/4 mx-auto text-lg">
                     <thead>
                         <tr>
                             <td class="w-1/5"></td>
@@ -29,8 +29,8 @@
                             <td class="w-1/5 text-center">{{$board -> created_at -> format('Y-m-d')}}</td>
                         </tr>
                     </tbody>
-                </table>
             @endforeach
+            </table>
         </div>
     </section>
 @stop

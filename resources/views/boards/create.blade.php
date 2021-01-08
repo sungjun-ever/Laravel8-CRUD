@@ -3,7 +3,7 @@
 @section('section')
     <section class="w-2/3 mx-auto">
         <div class="w-full text-2xl text-green-500 mt-8">글쓰기</div>
-        <form action="/boards" method="post" class="mt-8 w-full">
+        <form action="/boards" method="post" class="mt-8 w-full" enctype="multipart/form-data">
             @csrf
             <p>
                 <label for="title" class="text-xl">제목 : </label>
@@ -14,6 +14,11 @@
                 <label for="story" class="text-xl">내용</label>
                 <textarea id="story" name="story"
                           class="outline-none border border-blue-400 w-full h-64 mt-2 rounded-lg resize-none"></textarea>
+            </p>
+
+            <p class="mt-2">
+                <label for="picture"></label>
+                <input type="file" id="picture" name="picture">
             </p>
 
             <p class="mt-8">

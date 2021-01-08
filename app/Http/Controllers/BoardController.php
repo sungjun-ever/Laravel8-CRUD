@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Board;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BoardController extends Controller
 {
@@ -17,15 +18,22 @@ class BoardController extends Controller
 
     public function store(Request $request){
         $validation = $request -> validate([
+            'picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'title' => 'required',
             'story' => 'required'
         ]);
-
         $board = new Board();
         $board -> user_id = auth() -> user() -> id;
         $board -> user_name = auth() -> user() -> name;
         $board -> title = $validation['title'];
         $board -> story = $validation['story'];
+
+        if($request -> hasFile('picture')){
+            $fileName = time().'_'.$request -> file('picture') -> getClientOriginalName();
+            $path = $request -> file('picture') -> storeAs('public/images', $fileName);
+            $board -> image_name = $fileName;
+            $board -> image_path = $path;
+        }
         $board -> save();
 
         return redirect('boards/'.$board -> id);
