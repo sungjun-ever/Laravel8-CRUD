@@ -22,11 +22,13 @@ class BoardController extends Controller
         ]);
 
         $board = new Board();
+        $board -> user_id = auth() -> user() -> id;
+        $board -> user_name = auth() -> user() -> name;
         $board -> title = $validation['title'];
         $board -> story = $validation['story'];
         $board -> save();
 
-        return redirect() -> route('boards.index');
+        return redirect('boards/'.$board -> id);
     }
 
     public function show($id){
@@ -51,5 +53,12 @@ class BoardController extends Controller
         $board -> save();
 
         return redirect() -> route('boards.show', $id);
+    }
+
+    public function destroy($id){
+        $board = Board::where('id', $id) -> first();
+        $board -> delete();
+
+        return redirect() -> route('boards.index');
     }
 }

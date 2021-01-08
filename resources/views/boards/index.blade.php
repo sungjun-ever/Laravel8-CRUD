@@ -15,16 +15,18 @@
                 <table class="w-3/4 mx-auto text-lg">
                     <thead>
                         <tr>
-                            <td class="w-1/4"></td>
-                            <td class="w-2/4"></td>
-                            <td class="w-1/4"></td>
+                            <td class="w-1/5"></td>
+                            <td class="w-1/5"></td>
+                            <td class="w-2/5"></td>
+                            <td class="w-1/5"></td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="border-b mt-2">
-                            <td class="w-1/4 text-center">{{$board -> id}}</td>
-                            <td class="w-2/4"><a href="{{route('boards.show', $board -> id)}}">{{$board -> title}}</a></td>
-                            <td class="w-1/4 text-center">{{$board -> created_at -> format('Y-m-d')}}</td>
+                            <td class="w-1/5 text-center">{{$board -> id}}</td>
+                            <td class="w-1/5">{{$board -> user_name}}</td>
+                            <td class="w-2/5"><a href="{{route('boards.show', $board -> id)}}">{{$board -> title}}</a></td>
+                            <td class="w-1/5 text-center">{{$board -> created_at -> format('Y-m-d')}}</td>
                         </tr>
                     </tbody>
                 </table>

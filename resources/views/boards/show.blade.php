@@ -12,7 +12,11 @@
             <a href="{{route('boards.edit', $board -> id)}}">
                 <button class="px-4 py-1 text-white text-lg bg-blue-500 hover:bg-blue-700">수정</button>
             </a>
-            <button class="px-4 py-1 text-white text-lg bg-red-500 hover:bg-red-700">삭제</button>
+            <form action="/boards/{{$board -> id}}" method="post" class="inline-block">
+                @csrf
+                @method('DELETE')
+                <button class="px-4 py-1 text-white text-lg bg-red-500 hover:bg-red-700">삭제</button>
+            </form>
         </div>
     </section>
 @stop
